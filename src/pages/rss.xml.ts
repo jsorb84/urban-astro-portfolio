@@ -10,10 +10,9 @@ export async function GET(context: APIContext) {
 			Number(new Date(a.data.date ?? new Date()))
 	);
 	return rss({
-		title: "0xDedinfosec Blogs",
-		description:
-			"I post My Hackthebox writeups and other InfoSec findings here.",
-		site: context.site || "https://0xdedinfosec.vercel.app",
+		title: "𝔘𝔯𝔟𝔞𝔫 Consulting",
+		description: "𝔘𝔯𝔟𝔞𝔫 Consulting Landing Page",
+		site: context.site || "https://officialurban.xyz",
 		items: sortedPosts.map((post) => ({
 			title: post.data.title,
 			pubDate: post.data.date,
