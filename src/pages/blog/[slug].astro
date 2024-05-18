@@ -5,7 +5,6 @@ import { Picture } from 'astro:assets';
 import Avatar from '../../assets/images/avatar.png';
 import { format, parseISO } from 'date-fns';
 import readingTime from 'reading-time';
-import GiscusComment from '../../components/GiscusComment';
 import BlogPostViews from '../../components/BlogPostViews';
 
 export async function getStaticPaths() {
@@ -41,16 +40,16 @@ const { Content } = await blog.render();
                 <Picture
                     src={Avatar}
                     class='rounded-full h-6 w-6'
-                    alt='Dedsec'
+                    alt='𝔘𝔯𝔟𝔞𝔫'
                     formats={['avif', 'webp']}
                 />
                 <p class='ml-2 text-sm text-gray-700 dark:text-gray-300'>
-                    {'Dedsec / '}
+                    {'𝔘𝔯𝔟𝔞𝔫 / '}
                     {
-                        format(
-                            parseISO(blog.data.date.toISOString()),
+                        blog.data.date ? format(
+                            parseISO(blog.data.date?.toISOString()),
                             'MMMM dd, yyyy'
-                        )
+                        ) : <></>
                     }
                 </p>
             </div>
@@ -72,7 +71,7 @@ const { Content } = await blog.render();
             <p>{blog.data.description}</p>
             <Content />
         </div>
-        <GiscusComment client:only='react' />
+        <!-- <GiscusComment client:only='react' />
         <div class='text-sm text-gray-700 dark:text-gray-300'>
             <a
                 href={`https://mobile.twitter.com/search?q=${encodeURIComponent(
@@ -91,6 +90,6 @@ const { Content } = await blog.render();
             >
                 {'Suggest Change'}
             </a>
-        </div>
+        </div> -->
     </article>
 </MainLayout>

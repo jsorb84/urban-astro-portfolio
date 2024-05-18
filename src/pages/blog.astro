@@ -5,7 +5,7 @@ import BlogPostWithSearch from '../components/BlogPostWithSearch';
 
 const allBlogPosts = await getCollection('blogs');
 const sortedPosts = allBlogPosts.sort(
-    (a, b) => Number(new Date(b.data.date)) - Number(new Date(a.data.date))
+    (a, b) => Number(new Date(b.data.date ?? new Date())) - Number(new Date(a.data.date ?? new Date()))
 );
 ---
 
